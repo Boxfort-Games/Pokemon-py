@@ -1,0 +1,16 @@
+{
+    "[python]": {
+        "editor.tabSize": 4
+    },
+    "editor.formatOnSave": true,
+    "python.linting.enabled": true,
+    "python.linting.lintOnSave": true,
+    "python.linting.pylintEnabled": false,
+    "python.linting.flake8Enabled": true,
+    "files.exclude": {
+        "**/__pycache__/": true
+    },
+    "python.autoComplete.addBrackets": true,
+    "python.jediEnabled": false,
+    "pyright.openFilesOnly": false,
+}
