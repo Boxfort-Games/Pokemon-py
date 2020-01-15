@@ -7,15 +7,15 @@ def main():
     print(pokemon_to_str(pikachu))
 
 
-def indefinite_article(str: str) -> str:
+def prepend_indefinite_article(str: str) -> str:
     vowels = "aeiou"
-    return "an" if str[0].lower() in vowels else "a"
+    return f"an {str}" if str[0].lower() in vowels else "a {str}"
 
 
 def pokemon_to_str(pokemon: Pokemon) -> str:
     return (
         f"{pokemon.name} is #{pokemon.number}. "
-        f"It is {indefinite_article(pokemon.type.name)} {pokemon.type.name} type Pokemon."
+        f"It is {prepend_indefinite_article(pokemon.type.name)} type Pokemon."
     )
 
 
