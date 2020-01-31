@@ -1,6 +1,6 @@
-from models import Element, Types, Multiplier
+from models import Element, Multiplier, TypeInfo
 
-NORMAL = Types(
+NORMAL = TypeInfo(
     Element.NORMAL,
     {
         Element.ROCK: Multiplier.WEAK,
