@@ -31,7 +31,7 @@ class Element(Enum):
     FAIRY = auto()
 
 
-class Types():
+class Types:
     element: Element
     effectiveness: Dict[Element, Multiplier]
 
@@ -44,7 +44,7 @@ class Types():
         self.effectiveness = effectiveness
 
 
-class Pokemon():
+class Pokemon:
     name: str
     types: Set[Types]
     number: int
