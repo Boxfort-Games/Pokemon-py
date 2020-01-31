@@ -1,6 +1,13 @@
 from enum import Enum, auto
-from typing import List, Union
+from typing import Dict, Set, Union
 import random
+
+
+class Multiplier(Enum):
+    STRONG = 2
+    NORMAL = 1
+    WEAK = 0.5
+    NO_EFFECT = 0
 
 
 class Element(Enum):
@@ -26,37 +33,28 @@ class Element(Enum):
 
 class Types():
     element: Element
-    strong: List[Element]
-    weak: List[Element]
-    void: List[Element]
+    effectiveness: Dict[Element, Multiplier]
 
     def __init__(
         self,
         element: Element,
-        strong: List[Element] = None,
-        weak: List[Element] = None,
-        void: List[Element] = None
+        effectiveness: Dict[Element, Multiplier]
     ):
         self.element = element
-        if strong is not None:
-            self.strong = strong
-        if weak is not None:
-            self.weak = weak
-        if void is not None:
-            self.void = void
+        self.effectiveness = effectiveness
 
 
 class Pokemon():
     name: str
-    types: List[Types]
+    types: Set[Types]
     number: int
     health: int
 
-    def __init__(self, name: str, types: Union[Types, List[Types]], number: int, health: int = random.randint(20, 50)):
+    def __init__(self, name: str, types: Union[Types, Set[Types]], number: int, health: int = random.randint(20, 50)):
         self.name = name
         self.number = number
         self.health = health
         if isinstance(types, Types):
-            self.types = [types]
+            self.types = {types}
         else:
             self.types = types
