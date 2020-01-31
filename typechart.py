@@ -2,8 +2,8 @@ from models import Element, Types
 
 NORMAL = Types(
     Element.NORMAL,
-    ineffective=[Element.ROCK, Element.STEEL],
-    immune=[Element.GHOST]
+    weak=[Element.ROCK, Element.STEEL],
+    void=[Element.GHOST]
 )
 
 ELECTRIC = Types(

@@ -27,36 +27,36 @@ class Element(Enum):
 class Types():
     element: Element
     strong: List[Element]
-    ineffect ive: List[Element]
-    immune: List[Element]
+    weak: List[Element]
+    void: List[Element]
 
     def __init__(
         self,
         element: Element,
         strong: List[Element] = None,
-        ineffective: List[Element] = None,
-        immune: List[Element] = None
+        weak: List[Element] = None,
+        void: List[Element] = None
     ):
         self.element = element
         if strong is not None:
             self.strong = strong
-        if ineffective is not None:
-            self.ineffective = ineffective
-        if immune is not None:
-            self.immune = immune
+        if weak is not None:
+            self.weak = weak
+        if void is not None:
+            self.void = void
 
 
 class Pokemon():
     name: str
-    type: List[Types] = []
+    types: List[Types]
     number: int
     health: int
 
-    def __init__(self, name: str, type: Union[Types, List[Types]], number: int, health: int = random.randint(20, 50)):
+    def __init__(self, name: str, types: Union[Types, List[Types]], number: int, health: int = random.randint(20, 50)):
         self.name = name
         self.number = number
         self.health = health
-        if isinstance(type, Types):
-            self.type.append(type)
+        if isinstance(types, Types):
+            self.types = [types]
         else:
-            self.type = type
+            self.types = types
