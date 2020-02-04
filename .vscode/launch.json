@@ -10,7 +10,7 @@
             "request": "launch",
             "program": "${workspaceFolder}/app.py",
             "console": "internalConsole"
-        }
+        },
         {
             "name": "Python: Current File",
             "type": "python",

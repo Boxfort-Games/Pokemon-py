@@ -17,4 +17,5 @@
     "python.linting.flake8Args": [
         "--ignore=E501"
     ],
+    "python.pythonPath": ".venv/bin/python"
 }

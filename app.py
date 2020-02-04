@@ -4,6 +4,7 @@ from models import Pokemon
 
 def main():
     eevee = Pokemon("Eevee", typechart.NORMAL, 133)
+    print(eevee)
     # eevee: Pokemon
     # health: 41
     # name: "Eevee"
