@@ -1,22 +1,8 @@
-import typechart
-from models import Pokemon
+import states.menu as menu
 
 
 def main():
-    eevee = Pokemon("Eevee", typechart.NORMAL, 133)
-    print(eevee)
-    # eevee: Pokemon
-    # health: 41
-    # name: "Eevee"
-    # number: 133
-    # types: List
-    #     0: TypeInfo
-    #         element: Element.NORMAL,
-    #         effectiveness: {
-    #             Element.ROCK: Multiplier.WEAK,
-    #             Element.STEEL: Multiplier.WEAK,
-    #             Element.GHOST: Multiplier.NO_EFFECT
-    #         }
+    menu.Menu()
 
 
 if __name__ == '__main__':

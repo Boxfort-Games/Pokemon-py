@@ -13,7 +13,7 @@
     "python.autoComplete.addBrackets": true,
     "python.jediEnabled": false,
     "pyright.openFilesOnly": false,
-    "pyright.disableLanguageServices": true,
+    // "pyright.disableLanguageServices": true,
     "python.linting.flake8Args": [
         "--ignore=E501"
     ],

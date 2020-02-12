@@ -1,0 +1,9 @@
+{
+    "MISC": {
+        "PROMPT": "Pick an option: "
+    },
+    "MAIN": {
+        "ENTRY": "MAIN MENU: ",
+        "EXIT": "Thanks for playing!"
+    }
+}
