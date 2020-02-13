@@ -1,14 +1,31 @@
 from enum import IntEnum
-from typing import List, Optional, Type
+from typing import List, Type, TypeVar
+
+from getkey import getkey
+
+from config.config import TEXT
+
+
+T = TypeVar('T')
 
 
 class StateOptions(IntEnum):
     def __repr__(self) -> str:
         return f"{self.value} - {self.name}"
 
+    @classmethod
+    def list_options(cls: Type[T]) -> List[str]:
+        return list(map(lambda option: repr(option), cls))
+
 
 class State:
-    option: Optional[StateOptions]
-
-    def list_options(self, option_type: Type[IntEnum]) -> List[str]:
-        return list(map(lambda option: repr(option), option_type))
+    @staticmethod
+    def check_input(option_type: Type[T]) -> T:
+        print(*option_type.list_options(), sep="\n")
+        print(TEXT["MISC"]["PROMPT"])
+        try:
+            choice = getkey()
+            print(choice)
+            return option_type(int(choice))
+        except ValueError:
+            print(TEXT["MISC"]["ERROR"])

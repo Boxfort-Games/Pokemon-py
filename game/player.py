@@ -11,7 +11,8 @@ class Player:
         if (len(self.team) < 1):
             self.team.append(self.get_random_pokemon())
 
-    def get_random_pokemon(self) -> Pokemon:
+    @staticmethod
+    def get_random_pokemon() -> Pokemon:
         # TODO: actually random pokemon
         random_pokemon = Pokemon("Eevee", 133, typechart.NORMAL)
         return random_pokemon
