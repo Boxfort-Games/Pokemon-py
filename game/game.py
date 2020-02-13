@@ -1,6 +1,7 @@
 from typing import List
-from game.pokemon import Pokemon
+
 from game import typechart
+from game.pokemon import Pokemon
 
 
 class Game:

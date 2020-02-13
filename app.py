@@ -1,5 +1,5 @@
-from states.menu import Menu
 from game.game import Game
+from states.menu import Menu
 
 
 def main():

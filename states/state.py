@@ -1,5 +1,6 @@
 from enum import IntEnum
-from typing import Optional, List, Type
+from typing import List, Optional, Type
+
 from game.game import Game
 
 

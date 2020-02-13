@@ -1,17 +1,19 @@
 from typing import Optional
-from config.text import TEXT
+
 from getkey import getkey
-from states import state
+
+from config.config import TEXT
 from game.game import Game
+from states.state import State, StateOptions
 
 
-class MenuOptions(state.StateOptions):
+class MenuOptions(StateOptions):
     BATTLE = 1
     TEAM = 2
     EXIT = 3
 
 
-class Menu(state.State):
+class Menu(State):
     option: Optional[MenuOptions] = None
 
     def __init__(self, game: Game):

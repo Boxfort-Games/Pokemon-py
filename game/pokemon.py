@@ -1,7 +1,7 @@
-import random
 from enum import Enum, auto
-from typing import Dict, List, NamedTuple, Optional, Union
+import random
 from textwrap import dedent
+from typing import Dict, List, NamedTuple, Optional, Union
 
 
 class Multiplier(Enum):
