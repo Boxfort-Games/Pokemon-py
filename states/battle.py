@@ -1,4 +1,4 @@
-from models import Pokemon
+from game.pokemon import Pokemon
 
 
 class Battle:

@@ -1,4 +1,4 @@
-from models import Element, Multiplier, TypeInfo
+from game.pokemon import Element, Multiplier, TypeInfo
 
 NORMAL = TypeInfo(
     Element.NORMAL,

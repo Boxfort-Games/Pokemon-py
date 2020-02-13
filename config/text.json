@@ -1,6 +1,7 @@
 {
     "MISC": {
-        "PROMPT": "Pick an option: "
+        "PROMPT": "Pick an option: ",
+        "ERROR": "Not a valid option!"
     },
     "MAIN": {
         "ENTRY": "MAIN MENU: ",

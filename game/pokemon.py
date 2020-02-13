@@ -1,6 +1,7 @@
 import random
 from enum import Enum, auto
 from typing import Dict, List, NamedTuple, Optional, Union
+from textwrap import dedent
 
 
 class Multiplier(Enum):
@@ -60,11 +61,12 @@ class Pokemon:
             20, 50)
         self.health = self.total_health
 
-    def __repr__(self) -> str:
-        return f"""
+    def __str__(self) -> str:
+        return dedent(
+            f"""
             Pokemon #{self.dex_number}
-            ==================
             Name: {self.name}
             Type: {str(self.types)[1:-1]}
             Health: {self.health}/{self.total_health}
-        """
+            """
+        )

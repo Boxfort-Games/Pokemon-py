@@ -1,46 +1,40 @@
-from enum import Enum
-from typing import Optional, List
+from typing import Optional
 from config.text import TEXT
 from getkey import getkey
+from states import state
+from game.game import Game
 
 
-class MenuStates(Enum):
+class MenuOptions(state.StateOptions):
     BATTLE = 1
     TEAM = 2
     EXIT = 3
 
-    def __repr__(self) -> str:
-        return f"{self.value}: {self.name}"
 
+class Menu(state.State):
+    option: Optional[MenuOptions] = None
 
-class Menu:
-    state: Optional[MenuStates] = None
-
-    def __init__(self):
+    def __init__(self, game: Game):
+        super().__init__(game)
         self.check_input()
-
-    def list_options(self) -> List[str]:
-        # Rewrite with map lambda
-        options: List[str] = []
-        for option in MenuStates:
-            options.append(repr(option))
-        return options
 
     def check_input(self):
         print(TEXT["MAIN"]["ENTRY"])
-        while self.state is not MenuStates.EXIT:
-            self.list_options()
+        while self.option is not MenuOptions.EXIT:
+            print(*self.list_options(MenuOptions))
             print(TEXT["MISC"]["PROMPT"])
             try:
                 choice = int(getkey())
-                Menu.state = MenuStates(choice)
-                if Menu.state == MenuStates.BATTLE:
+                self.option = MenuOptions(choice)
+                if self.option == MenuOptions.BATTLE:
                     # Enter battle
+                    print("battle")
                     pass
-                elif Menu.state == MenuStates.TEAM:
+                elif self.option == MenuOptions.TEAM:
                     # Enter team
+                    print("team")
                     pass
-                elif Menu.state == MenuStates.EXIT:
+                elif self.option == MenuOptions.EXIT:
                     # Exit
                     print(TEXT["MAIN"]["EXIT"])
             except ValueError:

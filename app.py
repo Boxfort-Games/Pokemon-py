@@ -1,8 +1,11 @@
-import states.menu as menu
+from states.menu import Menu
+from game.game import Game
 
 
 def main():
-    menu.Menu()
+    game = Game()
+    print(str(*game.team))
+    Menu(game)
 
 
 if __name__ == '__main__':
