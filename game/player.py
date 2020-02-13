@@ -4,7 +4,7 @@ from game import typechart
 from game.pokemon import Pokemon
 
 
-class Game:
+class Player:
     team: List[Pokemon] = []
 
     def __init__(self):
@@ -15,3 +15,6 @@ class Game:
         # TODO: actually random pokemon
         random_pokemon = Pokemon("Eevee", 133, typechart.NORMAL)
         return random_pokemon
+
+
+PLAYER = Player()

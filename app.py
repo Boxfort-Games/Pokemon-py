@@ -1,12 +1,11 @@
-from game.game import Game
+from game.player import PLAYER
 from states.menu import Menu
 
 
 def main():
-    game = Game()
-    print(str(*game.team))
-    Menu(game)
+    print(str(*PLAYER.team))
+    Menu()
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     main()
