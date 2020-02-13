@@ -19,9 +19,9 @@ class Menu(state.State):
         self.check_input()
 
     def check_input(self):
-        print(TEXT["MAIN"]["ENTRY"])
         while self.option is not MenuOptions.EXIT:
-            print(*self.list_options(MenuOptions))
+            print(TEXT["MAIN"]["ENTRY"])
+            print(*self.list_options(MenuOptions), sep='\n')
             print(TEXT["MISC"]["PROMPT"])
             try:
                 choice = int(getkey())
