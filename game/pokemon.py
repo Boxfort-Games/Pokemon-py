@@ -1,43 +1,8 @@
-from enum import Enum, auto
 import random
 from textwrap import dedent
-from typing import Dict, List, NamedTuple, Optional, Union
+from typing import List, Optional, Union
 
-
-class Multiplier(Enum):
-    STRONG = 2
-    NORMAL = 1
-    WEAK = 0.5
-    NO_EFFECT = 0
-
-
-class Element(Enum):
-    NORMAL = auto()
-    FIGHT = auto()
-    FLYING = auto()
-    POISON = auto()
-    GROUND = auto()
-    ROCK = auto()
-    BUG = auto()
-    GHOST = auto()
-    STEEL = auto()
-    FIRE = auto()
-    WATER = auto()
-    GRASS = auto()
-    ELECTRIC = auto()
-    PSYCHIC = auto()
-    ICE = auto()
-    DRAGON = auto()
-    DARK = auto()
-    FAIRY = auto()
-
-
-class TypeInfo(NamedTuple):
-    element: Element
-    effectiveness: Dict[Element, Multiplier]
-
-    def __repr__(self) -> str:
-        return self.element.name.capitalize()
+from game.typechart import TypeInfo
 
 
 class Pokemon:
