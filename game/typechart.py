@@ -21,6 +21,9 @@ class Element(Enum):
     STEEL = auto()
     FAIRY = auto()
 
+    def __repr__(self) -> str:
+        return self.name.capitalize()
+
 
 class Multiplier(Enum):
     STRONG = 2

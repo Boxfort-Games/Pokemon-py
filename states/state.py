@@ -14,7 +14,7 @@ class StateOptions(IntEnum):
 
     @classmethod
     def list_options(cls: Type[T]) -> List[str]:
-        return list(map(lambda option: repr(option), cls))
+        return [repr(option) for option in cls]
 
 
 class State:
