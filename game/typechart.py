@@ -9,7 +9,7 @@ class Element(Enum):
     ELECTRIC = auto()
     GRASS = auto()
     ICE = auto()
-    FIGHT = auto()
+    FIGHTING = auto()
     POISON = auto()
     GROUND = auto()
     FLYING = auto()
@@ -89,8 +89,8 @@ ICE = TypeInfo(
     }
 )
 
-FIGHT = TypeInfo(
-    Element.FIGHT,
+FIGHTING = TypeInfo(
+    Element.FIGHTING,
     {
 
     }

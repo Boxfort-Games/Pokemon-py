@@ -1,6 +1,6 @@
 from typing import List
 
-from game import typechart
+from api import pokepy
 from game.pokemon import Pokemon
 
 
@@ -14,7 +14,8 @@ class Player:
     @staticmethod
     def get_random_pokemon() -> Pokemon:
         # TODO: actually random pokemon
-        random_pokemon = Pokemon("Eevee", 133, typechart.NORMAL)
+        random_pokemon = pokepy.get_random_pokemon_from_api()
+        # random_pokemon = Pokemon("Eevee", 133, typechart.NORMAL)
         return random_pokemon
 
 
