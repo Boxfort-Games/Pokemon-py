@@ -2,13 +2,13 @@ import random
 from textwrap import dedent
 from typing import List, Optional, Union
 
-from game.typechart import TypeInfo
+from game.typechart import Element
 
 
 class Pokemon:
     name: str
     dex_number: int
-    types: List[TypeInfo]
+    types: List[Element]
     health: int
     total_health: int
 
@@ -16,12 +16,12 @@ class Pokemon:
         self,
         name: str,
         dex_number: int,
-        types: Union[TypeInfo, List[TypeInfo]],
+        types: Union[Element, List[Element]],
         total_health: Optional[int] = None
     ):
         self.name = name
         self.dex_number = dex_number
-        self.types = [types] if isinstance(types, TypeInfo) else types
+        self.types = [types] if isinstance(types, Element) else types
         self.total_health = total_health if total_health is not None else random.randint(
             20, 50)
         self.health = self.total_health
