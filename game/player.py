@@ -9,14 +9,7 @@ class Player:
 
     def __init__(self):
         if (len(self.team) < 1):
-            self.team.append(self.get_random_pokemon())
-
-    @staticmethod
-    def get_random_pokemon() -> Pokemon:
-        # TODO: actually random pokemon
-        random_pokemon = pokeapi.get_random_pokemon_from_api()
-        # random_pokemon = Pokemon("Eevee", 133, typechart.NORMAL)
-        return random_pokemon
+            self.team.append(pokeapi.get_random_pokemon_from_api())
 
 
 PLAYER = Player()
