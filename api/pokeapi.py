@@ -12,8 +12,8 @@ MAX_DEX_NUMBER = 807
 
 
 def get_random_pokemon_from_api() -> Pokemon:
-    rand_pokepy_id = random.randint(1, MAX_DEX_NUMBER)
-    pokepy_mon = client.get_pokemon(rand_pokepy_id)
+    rand_dex_id = random.randint(1, MAX_DEX_NUMBER)
+    pokepy_mon = client.get_pokemon(rand_dex_id)
     return map_pokepy_to_pokemon(pokepy_mon)
 
 

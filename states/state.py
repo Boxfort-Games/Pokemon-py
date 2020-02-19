@@ -1,7 +1,7 @@
 from enum import IntEnum
 from typing import List, Type, TypeVar
 
-from getkey import getkey
+from readchar import readkey
 
 from config.config import TEXT
 
@@ -24,7 +24,7 @@ class State:
         print(*option_type.list_options(), sep="\n")
         print(TEXT["MISC"]["PROMPT"])
         try:
-            choice = getkey()
+            choice = readkey()
             print(choice)
             return option_type(int(choice))
         except ValueError:
