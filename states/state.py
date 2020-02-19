@@ -5,7 +5,6 @@ from readchar import readkey
 
 from config.config import TEXT
 
-
 T = TypeVar('T')
 
 
