@@ -6,6 +6,8 @@ from game.typechart import Element
 
 
 class Pokemon:
+    """Holds information about Pokemon in our own format"""
+
     name: str
     dex_number: int
     types: List[Element]
@@ -17,16 +19,21 @@ class Pokemon:
         name: str,
         dex_number: int,
         types: List[Element],
-        total_health: Optional[int] = None
+        total_health: Optional[int] = None,
     ):
+        """ads"""
+
         self.name = name
         self.dex_number = dex_number
         self.types = types
-        self.total_health = total_health if total_health is not None else random.randint(
-            20, 50)
+        self.total_health = (
+            total_health if total_health is not None else random.randint(20, 50)
+        )
         self.health = self.total_health
 
     def __str__(self) -> str:
+        """asdf"""
+
         return dedent(
             f"""
             Pokemon #{self.dex_number}

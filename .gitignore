@@ -123,4 +123,3 @@ dmypy.json
 .pyre/
 
 .vscode/settings.json
-temp/

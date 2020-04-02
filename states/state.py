@@ -5,7 +5,7 @@ from readchar import readkey
 
 from config.config import TEXT
 
-T = TypeVar('T')
+T = TypeVar("T")
 
 
 class StateOptions(IntEnum):
@@ -18,6 +18,8 @@ class StateOptions(IntEnum):
 
 
 class State:
+    """Function for main state and error catcher"""
+
     @staticmethod
     def check_input(option_type: Type[T]) -> T:
         print(*option_type.list_options(), sep="\n")
