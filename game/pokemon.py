@@ -21,7 +21,7 @@ class Pokemon:
         types: List[Element],
         total_health: Optional[int] = None,
     ):
-        """ads"""
+        """Property of Pokemon initialized"""
 
         self.name = name
         self.dex_number = dex_number
@@ -32,7 +32,7 @@ class Pokemon:
         self.health = self.total_health
 
     def __str__(self) -> str:
-        """asdf"""
+        """Converts the information of Pokemon to string"""
 
         return dedent(
             f"""

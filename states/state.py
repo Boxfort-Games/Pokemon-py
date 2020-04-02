@@ -9,6 +9,8 @@ T = TypeVar("T")
 
 
 class StateOptions(IntEnum):
+    """Gives Menu Option values"""
+
     def __repr__(self) -> str:
         return f"{self.value} - {self.name}"
 
