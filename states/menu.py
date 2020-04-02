@@ -19,7 +19,6 @@ class Menu(State):
 
     def __init__(self):
         """Logic for what occurs if exit option is not choesen"""
-        
         super().__init__()
         while self.option is not MenuOptions.EXIT:
             print(TEXT["MAIN"]["ENTRY"])
