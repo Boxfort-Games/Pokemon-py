@@ -29,14 +29,14 @@ class Pokemon:
         )
         self.health = self.total_health
 
+    def __repr__(self):
+        return self.name
+
     def __str__(self) -> str:
         """Converts Pokemon stats to terminal output string"""
 
-        return dedent(
-            f"""
-            Pokemon #{self.dex_number}
-            Name: {self.name}
-            Type: {str(self.types)[1:-1]}
-            Health: {self.health}/{self.total_health}
-            """
+        types_str = "".join("{:^9}".format(type) for type in self.types)
+
+        return "#{:<3d} {:11} {:2d}/{:2d} {:18}".format(
+            self.dex_number, self.name, self.health, self.total_health, types_str
         )

@@ -26,6 +26,9 @@ class Element(Enum):
     def __repr__(self) -> str:
         return self.name.capitalize()
 
+    def __str__(self) -> str:
+        return self.name.capitalize()
+
 
 class Multiplier(Enum):
     """Enum values for possible type advantage factors"""

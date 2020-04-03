@@ -6,5 +6,8 @@
     "MAIN": {
         "ENTRY": "MAIN MENU: ",
         "EXIT": "Thanks for playing!"
+    },
+    "POKEMON": {
+        "ADD": "joined your team!"
     }
 }
