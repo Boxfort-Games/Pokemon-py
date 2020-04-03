@@ -5,15 +5,20 @@ from states.state import State, StateOptions
 
 
 class MenuOptions(StateOptions):
+    """Enum values for options available in the menu"""
+
     BATTLE = 1
     TEAM = 2
     EXIT = 3
 
 
 class Menu(State):
+    """Game state for main menu"""
+
     option: Optional[MenuOptions] = None
 
     def __init__(self):
+        """Initializes the menu state and lists available options checking against user input if exit is not chosen"""
         super().__init__()
         while self.option is not MenuOptions.EXIT:
             print(TEXT["MAIN"]["ENTRY"])
@@ -21,6 +26,8 @@ class Menu(State):
             self.choose_option()
 
     def choose_option(self):
+        """Enters next game state based on player choice"""
+
         if self.option == MenuOptions.BATTLE:
             # Enter battle
             print("battle")

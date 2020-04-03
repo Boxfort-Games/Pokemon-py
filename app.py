@@ -3,6 +3,8 @@ from states.menu import Menu
 
 
 def main():
+    """Entry point for the application"""
+
     print(str(*PLAYER.team))
     Menu()
 

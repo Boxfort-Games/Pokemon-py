@@ -2,6 +2,8 @@ from enum import Enum, auto
 
 
 class Element(Enum):
+    """Possible types that a Pokemon can be"""
+
     NORMAL = auto()
     FIRE = auto()
     WATER = auto()
@@ -26,6 +28,8 @@ class Element(Enum):
 
 
 class Multiplier(Enum):
+    """Enum values for possible type advantage factors"""
+
     STRONG = 2
     NORMAL = 1
     WEAK = 0.5
@@ -36,7 +40,7 @@ TYPECHART = {
     Element.NORMAL: {
         Element.ROCK: Multiplier.WEAK,
         Element.STEEL: Multiplier.WEAK,
-        Element.GHOST: Multiplier.NO_EFFECT
+        Element.GHOST: Multiplier.NO_EFFECT,
     },
     Element.FIRE: {
         Element.FIRE: Multiplier.WEAK,
@@ -46,6 +50,6 @@ TYPECHART = {
         Element.BUG: Multiplier.STRONG,
         Element.ROCK: Multiplier.WEAK,
         Element.DRAGON: Multiplier.WEAK,
-        Element.STEEL: Multiplier.WEAK
-    }
+        Element.STEEL: Multiplier.WEAK,
+    },
 }
