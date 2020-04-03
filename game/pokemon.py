@@ -6,7 +6,7 @@ from game.typechart import Element
 
 
 class Pokemon:
-    """Holds information about Pokemon in current instance of the application"""
+    """Holds information about a Pokemon in current instance of the application"""
 
     name: str
     dex_number: int
