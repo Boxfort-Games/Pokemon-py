@@ -16,14 +16,17 @@ class StateOptions(IntEnum):
 
     @classmethod
     def list_options(cls: Type[T]) -> List[str]:
+        """Returns the the options as a string for application to print to user"""
+
         return [repr(option) for option in cls]
 
 
 class State:
-    """Function for main state and error catcher"""
+    """Base class for game states"""
 
     @staticmethod
     def check_input(option_type: Type[T]) -> T:
+        """Receives user input runs application accordingly even in the case an option not available is chosen"""
         print(*option_type.list_options(), sep="\n")
         print(TEXT["MISC"]["PROMPT"])
         try:

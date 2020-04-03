@@ -5,7 +5,7 @@ from states.state import State, StateOptions
 
 
 class MenuOptions(StateOptions):
-    """Variables for Menu options"""
+    """Enum values for options available in the menu"""
 
     BATTLE = 1
     TEAM = 2
@@ -13,12 +13,12 @@ class MenuOptions(StateOptions):
 
 
 class Menu(State):
-    """Displays options for Menu state change"""
+    """Displays, holds, and reads options for Menu state change"""
 
     option: Optional[MenuOptions] = None
 
     def __init__(self):
-        """Logic for what occurs if exit option is not choesen"""
+        """Initializes the menu state and lists available options checking against user input if exit is not chosen"""
         super().__init__()
         while self.option is not MenuOptions.EXIT:
             print(TEXT["MAIN"]["ENTRY"])
@@ -26,7 +26,7 @@ class Menu(State):
             self.choose_option()
 
     def choose_option(self):
-        """Runs respection option chosen"""
+        """Runs respective state chosen"""
 
         if self.option == MenuOptions.BATTLE:
             # Enter battle
