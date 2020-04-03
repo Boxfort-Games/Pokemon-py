@@ -21,7 +21,6 @@ class Menu(State):
 
     def __init__(self):
         """Initializes the menu state, lists available options, and checks against user input"""
-
         super().__init__()
         while self.option is not MenuOptions.EXIT:
             print(TEXT["MAIN"]["ENTRY"])
@@ -30,7 +29,6 @@ class Menu(State):
 
     def choose_option(self):
         """Enters next game state based on player choice"""
-
         if self.option == MenuOptions.BATTLE:
             Battle()
         elif self.option == MenuOptions.TEAM:

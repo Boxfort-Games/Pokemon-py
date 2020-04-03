@@ -17,7 +17,6 @@ class StateOptions(IntEnum):
     @classmethod
     def list_options(cls: Type[T]) -> List[str]:
         """Returns the options as a list of strings for terminal output"""
-
         return [repr(option) for option in cls]
 
 
@@ -27,7 +26,6 @@ class State:
     @staticmethod
     def check_input(option_type: Type[T]) -> T:
         """Receives user input and returns corresponding StateOption"""
-
         print(*option_type.list_options(), sep="\n")
         print(TEXT["MISC"]["PROMPT"])
         try:
