@@ -7,6 +7,7 @@ from game.typechart import Element
 
 client = pokepy.V2Client(cache="in_memory")
 
+"""Current highest Pokemon dex number in PokeAPI"""
 MAX_DEX_NUMBER = 807
 
 
@@ -19,7 +20,7 @@ def get_random_pokemon_from_api() -> Pokemon:
 
 
 def map_pokepy_to_pokemon(pokepy_mon: any) -> Pokemon:
-    """Converts the data pulled from the PokeApi and maps it to the Pokemon class"""
+    """Converts the data pulled from the PokeAPI and returns it as Pokemon class"""
 
     type_list = [
         Element[pokepy_type.type.name.upper()] for pokepy_type in pokepy_mon.types

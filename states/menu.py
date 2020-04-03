@@ -18,7 +18,8 @@ class Menu(State):
     option: Optional[MenuOptions] = None
 
     def __init__(self):
-        """Initializes the menu state and lists available options checking against user input if exit is not chosen"""
+        """Initializes the menu state, lists available options, and checks against user input"""
+
         super().__init__()
         while self.option is not MenuOptions.EXIT:
             print(TEXT["MAIN"]["ENTRY"])

@@ -1,6 +1,6 @@
 
 
 class Team:
-    """Team state for player viewing team"""
+    """Game state for player team management"""
     def __init__(self):
         super().__init__()
