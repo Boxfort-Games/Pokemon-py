@@ -21,7 +21,6 @@ class Pokemon:
         types: List[Element],
         total_health: Optional[int] = None,
     ):
-
         self.name = name
         self.dex_number = dex_number
         self.types = types

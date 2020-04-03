@@ -1,7 +1,9 @@
 from typing import Optional
 
 from config.config import TEXT
+from states.battle import Battle
 from states.state import State, StateOptions
+from states.team import Team
 
 
 class MenuOptions(StateOptions):
@@ -30,13 +32,9 @@ class Menu(State):
         """Enters next game state based on player choice"""
 
         if self.option == MenuOptions.BATTLE:
-            # Enter battle
-            print("battle")
-            pass
+            Battle()
         elif self.option == MenuOptions.TEAM:
-            # Enter team
-            print("team")
-            pass
+            Team()
         elif self.option == MenuOptions.EXIT:
             # Exit
             print(TEXT["MAIN"]["EXIT"])

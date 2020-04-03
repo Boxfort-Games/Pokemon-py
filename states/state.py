@@ -27,11 +27,13 @@ class State:
     @staticmethod
     def check_input(option_type: Type[T]) -> T:
         """Receives user input and returns corresponding StateOption"""
+
         print(*option_type.list_options(), sep="\n")
         print(TEXT["MISC"]["PROMPT"])
         try:
             choice = readkey()
-            print(choice)
-            return option_type(int(choice))
+            chosen_option = option_type(int(choice))
+            print(chosen_option.name, end="\n" * 2)
+            return option_type(chosen_option)
         except ValueError:
             print(TEXT["MISC"]["ERROR"])
