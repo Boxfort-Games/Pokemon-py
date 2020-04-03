@@ -9,7 +9,7 @@ T = TypeVar("T")
 
 
 class StateOptions(IntEnum):
-    """Gives Menu Option values"""
+    """Base enum class for possible actions in game state"""
 
     def __repr__(self) -> str:
         return f"{self.value} - {self.name}"
@@ -22,7 +22,7 @@ class StateOptions(IntEnum):
 
 
 class State:
-    """Base class for game states"""
+    """Base class for game state. Displays, holds, and reads options for Menu state change"""
 
     @staticmethod
     def check_input(option_type: Type[T]) -> T:

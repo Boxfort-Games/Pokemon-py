@@ -2,7 +2,7 @@ from enum import Enum, auto
 
 
 class Element(Enum):
-    """Possible types that Pokemon can be"""
+    """Possible types that a Pokemon can be"""
 
     NORMAL = auto()
     FIRE = auto()
@@ -28,7 +28,7 @@ class Element(Enum):
 
 
 class Multiplier(Enum):
-    """Type advantage calculations"""
+    """Enum values for possible type advantage factors"""
 
     STRONG = 2
     NORMAL = 1

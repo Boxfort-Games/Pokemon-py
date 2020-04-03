@@ -10,7 +10,7 @@ class Player:
     team: List[Pokemon] = []
 
     def __init__(self):
-        """Fills "Team" array with a random Pokemon from PokeApi and saved as a global variable"""
+        """Fills "team" array with a random Pokemon from PokeApi"""
 
         if len(self.team) < 1:
             self.team.append(pokeapi.get_random_pokemon_from_api())

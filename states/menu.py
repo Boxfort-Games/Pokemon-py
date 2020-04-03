@@ -13,7 +13,7 @@ class MenuOptions(StateOptions):
 
 
 class Menu(State):
-    """Displays, holds, and reads options for Menu state change"""
+    """Game state for main menu"""
 
     option: Optional[MenuOptions] = None
 
@@ -26,7 +26,7 @@ class Menu(State):
             self.choose_option()
 
     def choose_option(self):
-        """Runs respective state chosen"""
+        """Enters next game state based on player choice"""
 
         if self.option == MenuOptions.BATTLE:
             # Enter battle
