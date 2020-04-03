@@ -10,7 +10,7 @@ def main():
 
 
 def init_player():
-    """Start PLAYER instance and inform the player of their first Pokemon"""
+    """Starts PLAYER instance and inform user of their first Pokemon"""
     print(f"{PLAYER.team[0].name} {TEXT['POKEMON']['ADD']}")
     PLAYER.print_team()
 
