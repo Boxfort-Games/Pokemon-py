@@ -6,7 +6,7 @@ from game.typechart import Element
 
 
 class Pokemon:
-    """Holds information about a Pokemon in current instance of the application"""
+    """Holds information about a Pokemon's current instance"""
 
     name: str
     dex_number: int
@@ -31,7 +31,7 @@ class Pokemon:
         self.health = self.total_health
 
     def __str__(self) -> str:
-        """Converts the information of a Pokemon to string"""
+        """Converts Pokemon stats to terminal output string"""
 
         return dedent(
             f"""
