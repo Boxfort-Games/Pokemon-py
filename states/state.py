@@ -16,7 +16,7 @@ class StateOptions(IntEnum):
 
     @classmethod
     def list_options(cls: Type[T]) -> List[str]:
-        """Returns the options as a string for application to print to user"""
+        """Returns the options as a list of strings for application to print to user"""
 
         return [repr(option) for option in cls]
 
