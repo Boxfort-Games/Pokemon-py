@@ -1,5 +1,4 @@
 from game.player import PLAYER
-from config.config import TEXT
 from states.menu import Menu
 
 
@@ -11,7 +10,6 @@ def main():
 
 def init_player():
     """Starts PLAYER instance and inform user of their first Pokemon"""
-    print(f"{PLAYER.team[0].name} {TEXT['POKEMON']['ADD']}")
     PLAYER.print_team()
 
 

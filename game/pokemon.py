@@ -34,6 +34,6 @@ class Pokemon:
     def __str__(self) -> str:
         """Converts Pokemon stats to terminal output string"""
         types_str = "".join("{:^9}".format(type) for type in self.types)
-        return "#{:<3d} {:11} {:2d}/{:2d} {:18}".format(
+        return "#{:<3d} {:^11} {:2d}/{:2d}  {:18}".format(
             self.dex_number, self.name, self.health, self.total_health, types_str
         )
