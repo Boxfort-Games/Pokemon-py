@@ -9,5 +9,8 @@
     },
     "POKEMON": {
         "ADD": "joined your team!"
+    },
+    "TEAM": {
+        "ENTRY": "MANAGE TEAM"
     }
 }
