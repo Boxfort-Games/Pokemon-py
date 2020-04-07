@@ -28,8 +28,6 @@ class Team(State):
     def choose_option(self):
         """Enters next game state based on player choice"""
         if self.option == TeamOptions.TOSSPKMN:
-            Battle()
+            pass
         elif self.option == TeamOptions.REORDER:
-            Team()
-        elif self.option == TeamOptions.EXIT:
-            print(TEXT["TEAM"]["EXIT"])
+            pass

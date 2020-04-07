@@ -11,7 +11,7 @@
         "ADD": "joined your team!"
     },
     "TEAM": {
-        "ENTRY": "TEAM MENU",
+        "ENTRY": "MANAGE TEAM",
         "EXIT": " "
     }
 }
