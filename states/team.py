@@ -1,3 +1,5 @@
+from typing import Optional
+
 from readchar import readkey
 
 from config.config import TEXT
@@ -16,7 +18,7 @@ class TeamOptions(StateOptions):
 class Team(State):
     """Game state for player team management"""
 
-    option: TeamOptions
+    option: Optional[TeamOptions] = None
 
     def __init__(self):
         super().__init__()
@@ -56,7 +58,7 @@ class ReorderOptions(StateOptions):
 class Reorder(State):
     """Substate for reorganizing Pokemon on team"""
 
-    option: ReorderOptions
+    option: Optional[ReorderOptions] = None
 
     def __init__(self):
         super().__init__()
