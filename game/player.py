@@ -1,5 +1,7 @@
 from typing import List
 
+import asyncio
+
 from api import pokeapi
 from config.config import TEXT
 from game.pokemon import Pokemon
@@ -13,7 +15,9 @@ class Player:
     def __init__(self):
         """Fills the player's team with a random Pokemon from the PokeAPI"""
         if len(self.team) < 1:
-            self.add_to_team(pokeapi.get_random_pokemon_from_api())
+            # self.add_to_team(pokeapi.get_random_pokemon_from_api())
+            x = asyncio.run(pokeapi.get_random_pokemon_from_api())
+            pass
 
     def add_to_team(self, pokemon: Pokemon):
         """Add a pokemon to the user's team and inform the user"""

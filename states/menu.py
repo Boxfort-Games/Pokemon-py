@@ -1,5 +1,3 @@
-from typing import Optional
-
 from config.config import TEXT
 from states.battle import Battle
 from states.state import State, StateOptions
@@ -17,7 +15,7 @@ class MenuOptions(StateOptions):
 class Menu(State):
     """Game state for main menu"""
 
-    option: Optional[MenuOptions] = None
+    option: MenuOptions
 
     def __init__(self):
         """Initializes the menu state, lists available options, and checks against user input"""

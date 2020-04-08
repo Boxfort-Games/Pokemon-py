@@ -1,11 +1,12 @@
-from typing import Optional
+from readchar import readkey
 
 from config.config import TEXT
+from game.player import PLAYER
 from states.state import State, StateOptions
 
 
 class TeamOptions(StateOptions):
-    """Enum values for options availabe in team menu"""
+    """Enum values for team management options"""
 
     TOSSPKMN = 1
     REORDER = 2
@@ -15,7 +16,7 @@ class TeamOptions(StateOptions):
 class Team(State):
     """Game state for player team management"""
 
-    option: Optional[TeamOptions] = None
+    option: TeamOptions
 
     def __init__(self):
         super().__init__()
@@ -27,6 +28,32 @@ class Team(State):
     def choose_option(self):
         """Performs team action based on player choice"""
         if self.option == TeamOptions.TOSSPKMN:
-            pass
+            Toss()
         elif self.option == TeamOptions.REORDER:
             pass
+
+
+class Toss(State):
+    """Substate for tossing Pokemon from team"""
+
+    def __init__(self):
+        super().__init__()
+        if (len(PLAYER.team) > 1):
+            choice = readkey()
+
+
+class ReorderOptions(StateOptions):
+    """Enum values for reorder options"""
+
+    TYPE = 1
+    NO = 2
+    REVERSE = 3
+
+
+class Reorder(State):
+    """Substate for reorganizing Pokemon on team"""
+
+    option: ReorderOptions
+
+    def __init__(self):
+        super().__init__()
