@@ -1,6 +1,6 @@
 import asyncio
 import random
-from typing import Any, List
+from typing import Any, Awaitable, List
 
 from aiohttp import ClientSession
 
@@ -16,7 +16,7 @@ API_BASE_URL = "https://pokeapi.co/api/v2"
 API_POKEMON_URL = "/pokemon"
 
 
-async def get_pokemon_from_api(session: ClientSession, dex_id: int):
+async def get_pokemon_from_api(session: ClientSession, dex_id: int) -> Awaitable[Any]:
     """Asynchronously fetches full Pokemon info from the API"""
     url = f"{API_BASE_URL}{API_POKEMON_URL}/{dex_id}"
     async with session.get(url) as response:
