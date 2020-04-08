@@ -38,8 +38,11 @@ class Toss(State):
 
     def __init__(self):
         super().__init__()
-        if (len(PLAYER.team) > 1):
+        if len(PLAYER.team) > 1:
+            # Print prompt
+            # Print list of pokemon with numbers
             choice = readkey()
+            # Toss pokemon of choice
 
 
 class ReorderOptions(StateOptions):

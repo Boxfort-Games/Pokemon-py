@@ -8,6 +8,7 @@
             "name": "Python: Main",
             "type": "python",
             "request": "launch",
+            "justMyCode": true,
             "program": "${workspaceFolder}/app.py",
             "console": "integratedTerminal"
         },
@@ -15,6 +16,7 @@
             "name": "Python: Current File",
             "type": "python",
             "request": "launch",
+            "justMyCode": true,
             "program": "${file}",
             "console": "internalConsole"
         }

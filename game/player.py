@@ -15,9 +15,7 @@ class Player:
     def __init__(self):
         """Fills the player's team with a random Pokemon from the PokeAPI"""
         if len(self.team) < 1:
-            # self.add_to_team(pokeapi.get_random_pokemon_from_api())
-            x = asyncio.run(pokeapi.get_random_pokemon_from_api())
-            pass
+            self.team.extend(asyncio.run(pokeapi.get_random_pokemon_from_api(3)))
 
     def add_to_team(self, pokemon: Pokemon):
         """Add a pokemon to the user's team and inform the user"""
@@ -30,7 +28,7 @@ class Player:
             "No.", "Name", "Health", "Type", "Type 2"
         )
         print(header)
-        print(str(*self.team), end="\n" * 2)
+        print(*[str(pokemon) for pokemon in self.team], sep="\n", end="\n" * 2)
 
 
 """Global Player instance"""
