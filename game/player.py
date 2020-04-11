@@ -15,7 +15,7 @@ class Player:
     def __init__(self):
         """Fills the player's team with a random Pokemon from the PokeAPI"""
         if len(self.team) < 1:
-            self.team.extend(asyncio.run(pokeapi.get_random_pokemon_from_api(6)))
+            self.team.extend(asyncio.run(pokeapi.get_random_pokemon_from_api(1)))
 
     def add_to_team(self, pokemon: Pokemon):
         """Add a pokemon to the user's team and inform the user"""
