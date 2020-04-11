@@ -1,18 +1,20 @@
 {
-    "MISC": {
-        "PROMPT": "Pick an option:",
-        "ERROR": "Not a valid option!"
-    },
-    "MAIN": {
-        "ENTRY": "MAIN MENU:",
-        "EXIT": "Thanks for playing!"
-    },
-    "POKEMON": {
-        "ADD": "joined your team!"
-    },
-    "TEAM": {
-        "ENTRY": "MANAGE TEAM",
-        "TOSS": "Enter # of Pokemon to toss:",
-        "EXIT": "Any other key: Exit"
-    }
+  "MISC": {
+    "PROMPT": "Pick an option:",
+    "ERROR": "Not a valid option!"
+  },
+  "MAIN": {
+    "ENTRY": "MAIN MENU:",
+    "EXIT": "Thanks for playing!"
+  },
+  "POKEMON": {
+    "ADD": "joined your team!"
+  },
+  "TEAM": {
+    "ENTRY": "MANAGE TEAM",
+    "TOSS": "Enter # of Pokemon to toss:",
+    "RESULT": "has been released. Goodbye",
+    "EXIT": "Any other key: Exit",
+    "ERROR": "That Pokemon does not exist!"
+  }
 }
