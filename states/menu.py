@@ -23,7 +23,7 @@ class Menu(State):
         """Initializes the menu state, lists available options, and checks against user input"""
         super().__init__()
         while self.option is not MenuOptions.EXIT:
-            print(TEXT["MAIN"]["ENTRY"])
+            print(TEXT["MAIN"]["ENTRY"], end="\n" * 2)
             self.option = self.check_input(MenuOptions)
             self.choose_option()
 
@@ -35,4 +35,4 @@ class Menu(State):
             Team()
         elif self.option == MenuOptions.EXIT:
             # Exit
-            print(TEXT["MAIN"]["EXIT"])
+            print(TEXT["MAIN"]["EXIT"], end="\n" * 2)

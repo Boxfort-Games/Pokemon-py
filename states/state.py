@@ -27,11 +27,11 @@ class State:
     def check_input(option_type: Type[T]) -> T:
         """Receives user input and returns corresponding StateOption"""
         print(*option_type.list_options(), sep="\n")
-        print(TEXT["MISC"]["PROMPT"])
+        print(TEXT["MISC"]["PROMPT"], end="\n" * 2)
         try:
             choice = readkey()
             chosen_option = option_type(int(choice))
             print(chosen_option.name, end="\n" * 2)
             return option_type(chosen_option)
         except ValueError:
-            print(TEXT["MISC"]["ERROR"])
+            print(TEXT["MISC"]["OPTION_ERROR"])

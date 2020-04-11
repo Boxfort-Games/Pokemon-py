@@ -49,23 +49,31 @@ class Toss(State):
                     *[f"{str(i+1)}. {slot.name}" for i, slot in enumerate(PLAYER.team)],
                     sep="\n",
                 )
-                print(TEXT["TEAM"]["EXIT"])
+                print(TEXT["TEAM"]["EXIT"], end="\n" * 2)
 
-                try:
-                    choice = readkey()
-                    player_toss_choice = PLAYER.team[int(choice) - 1]
-                    print(
-                        f"{player_toss_choice.name} {TEXT['TEAM']['RESULT']} {player_toss_choice.name}!",
-                        end="\n" * 2,
-                    )
-                    PLAYER.team.remove(player_toss_choice)
-                    self.is_tossing = False
-                except IndexError:
-                    # Index not found in PLAYER.team
-                    print(TEXT["TEAM"]["ERROR"], end="\n" * 2)
-                except ValueError:
-                    # Key other than number was pressed
-                    self.is_tossing = False
+                self.is_tossing = self.attempt_toss()
+            else:
+                print(TEXT["TEAM"]["SIZE_ERROR"], end="\n" * 2)
+                self.is_tossing = False
+
+    @staticmethod
+    def attempt_toss() -> bool:
+        try:
+            choice = readkey()
+            player_toss_choice = PLAYER.team[int(choice) - 1]
+            print(
+                f"{player_toss_choice.name} {TEXT['TEAM']['RESULT']} {player_toss_choice.name}!",
+                end="\n" * 2,
+            )
+            PLAYER.team.remove(player_toss_choice)
+            return False
+        except IndexError:
+            # Index not found in PLAYER.team
+            print(TEXT["TEAM"]["ERROR"], end="\n" * 2)
+            return True
+        except ValueError:
+            # Key other than number was pressed
+            return False
 
 
 class ReorderOptions(StateOptions):
