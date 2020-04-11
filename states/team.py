@@ -41,9 +41,34 @@ class Toss(State):
     def __init__(self):
         super().__init__()
         if len(PLAYER.team) > 1:
+            # print(
+            #     *[f"{str(i+1)}. {slot.name}" for i, slot in enumerate(PLAYER.team)],
+            #     sep="\n",
+            #     end="\n" * 2,
+            # )
+
             # Print prompt
+            print(TEXT["TEAM"]["TOSS"])
+
             # Print list of pokemon with numbers
-            choice = readkey()
+            for i, slot in enumerate(PLAYER.team):
+                x = f"{str(i+1)}. {slot.name}"
+                print(x)
+            print(TEXT["TEAM"]["EXIT"])
+
+            # Read user choice
+            try:
+                choice = readkey()
+                chosen_option = int(choice)
+                del PLAYER.team[chosen_option - 1]
+                # range(0, len(PLAYER.team) - 1)
+                # print(chosen_option.name, end="\n" * 2)
+                # return option_type(chosen_option)
+            except IndexError:
+                print(TEXT["MISC"]["ERROR"])
+            # except ValueError:
+            #     pass
+
             # Toss pokemon of choice
 
 
