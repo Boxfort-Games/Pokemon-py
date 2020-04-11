@@ -58,6 +58,7 @@ class Toss(State):
 
     @staticmethod
     def attempt_toss() -> bool:
+        """Receives user input and attempts to toss a pokemon"""
         try:
             choice = readkey()
             player_toss_choice = PLAYER.team[int(choice) - 1]
