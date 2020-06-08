@@ -17,8 +17,6 @@
         "EXIT": "Any other key: Exit",
         "EXIST_ERROR": "That Pokemon does not exist!",
         "SIZE_ERROR": "Cannot toss with only one Pokemon in your team!",
-        "REORDER": {
-            "ENTRY": "RE-ORDER TEAM"
-        }
+        "REORDER": "REORDER TEAM"
     }
 }
