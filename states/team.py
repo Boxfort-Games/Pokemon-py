@@ -21,7 +21,7 @@ class Reorder(State):
 
     def __init__(self):
         super().__init__()
-        print(TEXT["TEAM"]["REORDER"]["ENTRY"])
+        print(TEXT["TEAM"]["REORDER"])
         self.option = self.check_input(ReorderOptions)
         if self.option == ReorderOptions.TYPE:
             pass
