@@ -22,7 +22,7 @@ class Menu(State):
     def __init__(self):
         """Initializes the menu state, lists available options, and checks against user input"""
         super().__init__()
-        while self.option is not MenuOptions.EXIT:
+        while self.option != MenuOptions.EXIT:
             print(TEXT["MAIN"]["ENTRY"], end="\n" * 2)
             self.option = self.check_input(MenuOptions)
             self.choose_option()

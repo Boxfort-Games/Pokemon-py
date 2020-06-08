@@ -7,34 +7,6 @@ from game.player import PLAYER
 from states.state import State, StateOptions
 
 
-class TeamOptions(StateOptions):
-    """Enum values for team management options"""
-
-    TOSSPKMN = 1
-    REORDER = 2
-    EXIT = 3
-
-
-class Team(State):
-    """Game state for player team management"""
-
-    option: Optional[TeamOptions] = None
-
-    def __init__(self):
-        super().__init__()
-        while self.option is not TeamOptions.EXIT:
-            print(TEXT["TEAM"]["ENTRY"])
-            self.option = self.check_input(TeamOptions)
-            self.choose_option()
-
-    def choose_option(self):
-        """Performs team action based on player choice"""
-        if self.option == TeamOptions.TOSSPKMN:
-            Toss()
-        elif self.option == TeamOptions.REORDER:
-            pass
-
-
 class Toss(State):
     """Substate for tossing Pokemon from team"""
 
@@ -83,6 +55,7 @@ class ReorderOptions(StateOptions):
     TYPE = 1
     NO = 2
     REVERSE = 3
+    EXIT = 4
 
 
 class Reorder(State):
@@ -92,3 +65,36 @@ class Reorder(State):
 
     def __init__(self):
         super().__init__()
+        while self.option != ReorderOptions.EXIT:
+            print(TEXT["TEAM"]["REORDER"]["ENTRY"])
+            self.option = self.check_input(ReorderOptions)
+            if self.option == ReorderOptions.TYPE:
+                pass
+            elif self.option == ReorderOptions.NO:
+                pass
+            elif self.option == ReorderOptions.REVERSE:
+                PLAYER.team = PLAYER.team[::-1]
+
+
+class TeamOptions(StateOptions):
+    """Enum values for team management options"""
+
+    TOSSPKMN = 1
+    REORDER = 2
+    EXIT = 3
+
+
+class Team(State):
+    """Game state for player team management"""
+
+    option: Optional[TeamOptions] = None
+
+    def __init__(self):
+        super().__init__()
+        while self.option != TeamOptions.EXIT:
+            print(TEXT["TEAM"]["ENTRY"])
+            self.option = self.check_input(TeamOptions)
+            if self.option == TeamOptions.TOSSPKMN:
+                Toss()
+            elif self.option == TeamOptions.REORDER:
+                Reorder()
