@@ -29,7 +29,7 @@ class Player:
         while is_tossing:
             if len(PLAYER.team) <= 1:
                 print(TEXT["TEAM"]["SIZE_ERROR"], end="\n" * 2)
-                self.is_tossing = False
+                is_tossing = False
             else:
                 print(TEXT["TEAM"]["TOSS"])
                 print(
@@ -38,22 +38,26 @@ class Player:
                 )
                 print(TEXT["TEAM"]["EXIT"], end="\n" * 2)
 
-                self.is_tossing = self.__attempt_toss()
+                is_tossing = self.__attempt_toss()
 
     def __attempt_toss(self) -> bool:
         """Receives user input and attempts to toss a pokemon"""
         try:
             choice = readkey()
-            player_toss_choice = self.team[int(choice) - 1]
+            player_toss_index = int(choice) - 1
+            player_toss_choice = self.team[player_toss_index]
+
+            if player_toss_index < 0:
+                raise IndexError
             print(
                 f"{player_toss_choice.name} {TEXT['TEAM']['RESULT']} {player_toss_choice.name}!",
                 end="\n" * 2,
             )
-            self.team.remove(player_toss_choice)
+            self.team.pop(player_toss_index)
             return False
         except IndexError:
             # Index not found in team
-            print(TEXT["TEAM"]["ERROR"], end="\n" * 2)
+            print(TEXT["TEAM"]["EXIST_ERROR"], end="\n" * 2)
             return True
         except ValueError:
             # Key other than number was pressed
