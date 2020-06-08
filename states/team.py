@@ -29,7 +29,7 @@ class Reorder(State):
             pass
         elif self.option == ReorderOptions.REVERSE:
             PLAYER.team = PLAYER.team[::-1]
-            PLAYER.print_team()
+        PLAYER.print_team()
 
 
 class TeamOptions(StateOptions):

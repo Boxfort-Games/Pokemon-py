@@ -24,6 +24,7 @@ class Player:
         print(f"{pokemon.name} {TEXT['POKEMON']['ADD']}")
 
     def remove_from_team(self):
+        """Prompts user to remove a pokemon from the user's team"""
         is_tossing = True
         while is_tossing:
             if len(PLAYER.team) <= 1:
