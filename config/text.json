@@ -16,6 +16,7 @@
         "RESULT": "has been released. Goodbye",
         "EXIT": "Any other key: Exit",
         "EXIST_ERROR": "That Pokemon does not exist!",
-        "SIZE_ERROR": "Cannot toss with only one Pokemon in your team!"
+        "SIZE_ERROR": "Cannot toss with only one Pokemon in your team!",
+        "REORDER": "REORDER TEAM"
     }
 }
