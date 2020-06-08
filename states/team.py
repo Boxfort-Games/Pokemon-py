@@ -21,15 +21,15 @@ class Reorder(State):
 
     def __init__(self):
         super().__init__()
-        while self.option != ReorderOptions.EXIT:
-            print(TEXT["TEAM"]["REORDER"]["ENTRY"])
-            self.option = self.check_input(ReorderOptions)
-            if self.option == ReorderOptions.TYPE:
-                pass
-            elif self.option == ReorderOptions.NO:
-                pass
-            elif self.option == ReorderOptions.REVERSE:
-                PLAYER.team = PLAYER.team[::-1]
+        print(TEXT["TEAM"]["REORDER"]["ENTRY"])
+        self.option = self.check_input(ReorderOptions)
+        if self.option == ReorderOptions.TYPE:
+            pass
+        elif self.option == ReorderOptions.NO:
+            pass
+        elif self.option == ReorderOptions.REVERSE:
+            PLAYER.team = PLAYER.team[::-1]
+            PLAYER.print_team()
 
 
 class TeamOptions(StateOptions):
@@ -51,6 +51,7 @@ class Team(State):
             print(TEXT["TEAM"]["ENTRY"])
             self.option = self.check_input(TeamOptions)
             if self.option == TeamOptions.TOSSPKMN:
-                Toss()
+                PLAYER.remove_from_team()
             elif self.option == TeamOptions.REORDER:
+                PLAYER.print_team()
                 Reorder()
