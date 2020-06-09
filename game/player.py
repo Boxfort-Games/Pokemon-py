@@ -27,13 +27,13 @@ class Player:
         """Prompts user to remove a pokemon from the user's team"""
         is_tossing = True
         while is_tossing:
-            if len(PLAYER.team) <= 1:
+            if len(self.team) <= 1:
                 print(TEXT["TEAM"]["SIZE_ERROR"], end="\n" * 2)
                 is_tossing = False
             else:
                 print(TEXT["TEAM"]["TOSS"])
                 print(
-                    *[f"{str(i+1)}. {slot.name}" for i, slot in enumerate(PLAYER.team)],
+                    *[f"{str(i+1)}. {slot.name}" for i, slot in enumerate(self.team)],
                     sep="\n",
                 )
                 print(TEXT["TEAM"]["EXIT"], end="\n" * 2)
