@@ -1,5 +1,6 @@
 from typing import Optional
 
+from config.config import TEXT
 from game.pokemon import Pokemon
 from states.state import State, StateOptions
 
@@ -20,4 +21,13 @@ class Battle(State):
     enemy: Pokemon
 
     def __init__(self):
-        pass
+        super().__init__()
+        print(TEXT["BATTLE"]["ENTRY"])
+        while self.option != BattleOptions.RUN:
+            self.option = self.check_input(BattleOptions)
+            if self.option == BattleOptions.FIGHT:
+                pass
+            elif self.option == BattleOptions.TEAM:
+                pass
+            elif self.option == BattleOptions.CATCH:
+                pass
