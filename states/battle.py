@@ -7,7 +7,10 @@ from states.state import State, StateOptions
 class BattleOptions(StateOptions):
     """Enum values for battle actions"""
 
-    pass
+    FIGHT = 1
+    TEAM = 2
+    CATCH = 3
+    RUN = 4
 
 
 class Battle(State):
