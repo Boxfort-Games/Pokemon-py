@@ -18,5 +18,8 @@
         "EXIST_ERROR": "That Pokemon does not exist!",
         "SIZE_ERROR": "Cannot toss with only one Pokemon in your team!",
         "REORDER": "REORDER TEAM"
+    },
+    "BATTLE": {
+        "ENTRY": "A wild {} appeared!"
     }
 }
