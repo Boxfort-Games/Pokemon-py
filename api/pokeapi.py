@@ -1,6 +1,6 @@
 import asyncio
 import random
-from typing import Any, Awaitable, List
+from typing import Any, List
 
 from aiohttp import ClientSession
 
@@ -16,24 +16,30 @@ API_BASE_URL = "https://pokeapi.co/api/v2"
 API_POKEMON_URL = "/pokemon"
 
 
-async def get_pokemon_from_api(session: ClientSession, dex_id: int) -> Awaitable[Any]:
+async def get_random_pokemon_from_api() -> Pokemon:
+    async with ClientSession() as session:
+        rand_id = random.randint(1, MAX_DEX_NUMBER)
+        response = await __fetch_pokemon_from_api(session, rand_id)
+    return map_pokepy_to_pokemon(response)
+
+
+async def get_random_pokemons_from_api(quantity: int) -> List[Pokemon]:
+    """Returns a list of random Pokemon from the API"""
+    async with ClientSession() as session:
+        tasks = []
+        for _ in range(quantity):
+            rand_id = random.randint(1, MAX_DEX_NUMBER)
+            task = __fetch_pokemon_from_api(session, rand_id)
+            tasks.append(task)
+        responses = await asyncio.gather(*tasks)
+    return [map_pokepy_to_pokemon(response) for response in responses]
+
+
+async def __fetch_pokemon_from_api(session: ClientSession, dex_id: int) -> Any:
     """Asynchronously fetches full Pokemon info from the API"""
     url = f"{API_BASE_URL}{API_POKEMON_URL}/{dex_id}"
     async with session.get(url) as response:
         return await response.json()
-
-
-async def get_random_pokemon_from_api(quantity: int = 1) -> List[Pokemon]:
-    """Asynchronously returns a number of random Pokemon from the API"""
-    loop = asyncio.get_event_loop()
-    tasks = []
-    async with ClientSession(loop=loop) as session:
-        for _ in range(quantity):
-            rand_dex_id = random.randint(1, MAX_DEX_NUMBER)
-            task = get_pokemon_from_api(session, rand_dex_id)
-            tasks.append(task)
-        responses = await asyncio.gather(*tasks)
-    return [map_pokepy_to_pokemon(response) for response in responses]
 
 
 def map_pokepy_to_pokemon(pokepy_mon: Any) -> Pokemon:
