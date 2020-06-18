@@ -25,7 +25,7 @@ Install required packages using `pip install -r requirements.txt`
 
 ### Building
 
-A build process is not yet in place and will be detailed closer to release. In the meantime, the application can be run by cloning this repo, installing the above requirements, and launched with `python app.py` or by using the VSCode `launch.json` profile included in this repository.
+A build process is not yet in place and will be detailed closer to release. In the meantime, the application can be run by cloning this repo, installing the above requirements, and launching either with `python app.py` or with the VSCode `launch.json` profile included in this repository.
 
 ### Releases
 
