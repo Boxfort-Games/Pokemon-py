@@ -1,6 +1,6 @@
 # Pokemon-py
 
-A pet project demonstrating a playable Pokémon game in the terminal, made with Python 3 utilizing [type hints](https://docs.python.org/3/library/typing.html). The project imports and uses Pokemon data from [PokéAPI](https://pokeapi.co/) to be used in the game. A full state diagram detailing the application's features can be found [here](https://drive.google.com/file/d/1ZgtKxDFsFq5p5o_zYvAkEZLtXq2w86bN/view?usp=sharing), and a kanban-style board detailing development progress can be found in the [repository's projects](https://github.com/Boxfort-Labs/Pokemon-py/projects).
+A pet project demonstrating a playable Pokémon game in the terminal, made with Python 3 utilizing [type hints](https://docs.python.org/3/library/typing.html). The project imports and uses Pokémon data from [PokéAPI](https://pokeapi.co/) to be used in the game. A full state diagram detailing the application's features can be found [here](https://drive.google.com/file/d/1ZgtKxDFsFq5p5o_zYvAkEZLtXq2w86bN/view?usp=sharing), and a kanban-style board detailing development progress can be found in the [repository's projects](https://github.com/Boxfort-Labs/Pokemon-py/projects).
 
 ```
 Lairon joined your team!
