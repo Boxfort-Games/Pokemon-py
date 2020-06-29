@@ -36,7 +36,7 @@ class Reorder(State):
             PLAYER.team.sort(key=attrgetter("dex_number"), reverse=True)
         elif self.option == ReorderOptions.REVERSE:
             PLAYER.team = PLAYER.team[::-1]
-        PLAYER.print_team()
+        PLAYER.print_team_detail()
 
 
 class TeamOptions(StateOptions):
@@ -44,7 +44,8 @@ class TeamOptions(StateOptions):
 
     TOSSPKMN = 1
     REORDER = 2
-    EXIT = 3
+    LEADER = 3
+    EXIT = 4
 
 
 class Team(State):
@@ -60,5 +61,7 @@ class Team(State):
             if self.option == TeamOptions.TOSSPKMN:
                 PLAYER.remove_from_team()
             elif self.option == TeamOptions.REORDER:
-                PLAYER.print_team()
+                PLAYER.print_team_detail()
                 Reorder()
+            elif self.option == TeamOptions.LEADER:
+                PLAYER.set_first()

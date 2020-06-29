@@ -1,25 +1,27 @@
 {
-    "MISC": {
-        "PROMPT": "Pick an option:",
-        "OPTION_ERROR": "Not a valid option!"
-    },
-    "MAIN": {
-        "ENTRY": "MAIN MENU:",
-        "EXIT": "Thanks for playing!"
-    },
-    "POKEMON": {
-        "ADD": "joined your team!"
-    },
-    "TEAM": {
-        "ENTRY": "MANAGE TEAM",
-        "TOSS": "Enter # of Pokemon to toss:",
-        "RESULT": "has been released. Goodbye",
-        "EXIT": "Any other key: Exit",
-        "EXIST_ERROR": "That Pokemon does not exist!",
-        "SIZE_ERROR": "Cannot toss with only one Pokemon in your team!",
-        "REORDER": "REORDER TEAM"
-    },
-    "BATTLE": {
-        "ENTRY": "A wild {} appeared!"
-    }
+  "MISC": {
+    "PROMPT": "Pick an option:",
+    "OPTION_ERROR": "Not a valid option!"
+  },
+  "MAIN": {
+    "ENTRY": "MAIN MENU:",
+    "EXIT": "Thanks for playing!"
+  },
+  "POKEMON": {
+    "ADD": "joined your team!"
+  },
+  "TEAM": {
+    "ENTRY": "MANAGE TEAM",
+    "TOSS": "Enter # of Pokemon to toss:",
+    "FIRST": "Enter # of Pokemon to lead the party:",
+    "RESULT_FIRST": "{} is now leading the party!",
+    "RESULT_TOSS": "{} has been released. Goodbye {}!",
+    "EXIT": "Any other key: Exit",
+    "EXIST_ERROR": "That Pokemon does not exist!",
+    "SIZE_ERROR": "Cannot do that with only one Pokemon in your team!",
+    "REORDER": "REORDER TEAM"
+  },
+  "BATTLE": {
+    "ENTRY": "A wild {} appeared!"
+  }
 }
