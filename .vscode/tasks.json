@@ -3,10 +3,13 @@
     "tasks": [
         {
             "label": "Pip Install",
+            "detail": "pip install -r requirements.txt",
             "type": "shell",
             "problemMatcher": [],
-            "command": "pip",
+            "command": "${config:python.pythonPath}",
             "args": [
+                "-m",
+                "pip",
                 "install",
                 "-r",
                 "requirements.txt"
