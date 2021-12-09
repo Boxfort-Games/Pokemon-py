@@ -1,5 +1,5 @@
 import random
-from typing import List, Optional
+from typing import Optional
 
 from game.typechart import Element
 
@@ -9,7 +9,7 @@ class Pokemon:
 
     name: str
     dex_number: int
-    types: List[Element]
+    types: list[Element]
     health: int
     total_health: int
 
@@ -17,7 +17,7 @@ class Pokemon:
         self,
         name: str,
         dex_number: int,
-        types: List[Element],
+        types: list[Element],
         total_health: Optional[int] = None,
     ):
         self.name = name

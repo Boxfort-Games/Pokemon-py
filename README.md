@@ -19,7 +19,7 @@ Pick an option:
 
 ### Requirements
 
-[Python 3.7+](https://www.python.org/downloads/)
+[Python 3.9+](https://www.python.org/downloads/)
 
 Install required packages using `pip install -r requirements.txt`
 

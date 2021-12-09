@@ -1,7 +1,7 @@
 from operator import attrgetter
 from typing import Optional
 
-from config.config import TEXT
+from config.config import MESSAGES
 from game.player import PLAYER
 from states.state import State, StateOptions
 
@@ -24,7 +24,7 @@ class Reorder(State):
 
     def __init__(self):
         super().__init__()
-        print(TEXT["TEAM"]["REORDER"])
+        print(MESSAGES["TEAM"]["REORDER"])
         self.option = self.check_input(ReorderOptions)
         if self.option == ReorderOptions.TYPE:
             PLAYER.team.sort(key=lambda pokemon: pokemon.types[0].name)
@@ -55,7 +55,7 @@ class Team(State):
     def __init__(self):
         super().__init__()
         while self.option != TeamOptions.EXIT:
-            print(TEXT["TEAM"]["ENTRY"])
+            print(MESSAGES["TEAM"]["ENTRY"])
             self.option = self.check_input(TeamOptions)
             if self.option == TeamOptions.TOSSPKMN:
                 PLAYER.remove_from_team()

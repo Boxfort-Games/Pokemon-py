@@ -1,17 +1,15 @@
 import asyncio
-from typing import List
-
 from readchar import readkey
 
 from api import pokeapi
-from config.config import TEXT
+from config.config import MESSAGES
 from game.pokemon import Pokemon
 
 
 class Player:
     """Holds current information about the player"""
 
-    team: List[Pokemon] = []
+    team: list[Pokemon] = []
 
     def __init__(self):
         """Fills the player's team with a random Pokemon from the PokeAPI"""
@@ -21,22 +19,22 @@ class Player:
     def add_to_team(self, pokemon: Pokemon):
         """Add a pokemon to the user's team and inform the user"""
         self.team.append(pokemon)
-        print(f"{pokemon.name} {TEXT['POKEMON']['ADD']}")
+        print(f"{pokemon.name} {MESSAGES['POKEMON']['ADD']}")
 
     def remove_from_team(self):
         """Prompts user to remove a pokemon from the user's team"""
         is_tossing = True
         while is_tossing:
             if len(self.team) <= 1:
-                print(TEXT["TEAM"]["SIZE_ERROR"], end="\n" * 2)
+                print(MESSAGES["TEAM"]["SIZE_ERROR"], end="\n" * 2)
                 is_tossing = False
             else:
-                print(TEXT["TEAM"]["TOSS"])
+                print(MESSAGES["TEAM"]["TOSS"])
                 print(
                     *[f"{str(i+1)}. {slot.name}" for i, slot in enumerate(self.team)],
                     sep="\n",
                 )
-                print(TEXT["TEAM"]["EXIT"], end="\n" * 2)
+                print(MESSAGES["TEAM"]["EXIT"], end="\n" * 2)
 
                 is_tossing = self.__attempt_toss()
 
@@ -50,14 +48,14 @@ class Player:
             if player_toss_index < 0:
                 raise IndexError
             print(
-                f"{player_toss_choice.name} {TEXT['TEAM']['RESULT']} {player_toss_choice.name}!",
+                f"{player_toss_choice.name} {MESSAGES['TEAM']['RESULT']} {player_toss_choice.name}!",
                 end="\n" * 2,
             )
             self.team.pop(player_toss_index)
             return False
         except IndexError:
             # Index not found in team
-            print(TEXT["TEAM"]["EXIST_ERROR"], end="\n" * 2)
+            print(MESSAGES["TEAM"]["EXIST_ERROR"], end="\n" * 2)
             return True
         except ValueError:
             # Key other than number was pressed

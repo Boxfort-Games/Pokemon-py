@@ -1,6 +1,6 @@
 import asyncio
 import random
-from typing import Any, List
+from typing import Any
 
 from aiohttp import ClientSession
 
@@ -9,7 +9,7 @@ from game.typechart import Element
 
 
 """Current highest Pokemon dex number in PokeAPI"""
-MAX_DEX_NUMBER = 807
+MAX_DEX_NUMBER = 898
 
 """PokeAPI urls"""
 API_BASE_URL = "https://pokeapi.co/api/v2"
@@ -23,7 +23,7 @@ async def get_random_pokemon_from_api() -> Pokemon:
     return map_pokepy_to_pokemon(response)
 
 
-async def get_random_pokemons_from_api(quantity: int) -> List[Pokemon]:
+async def get_random_pokemons_from_api(quantity: int) -> list[Pokemon]:
     """Returns a list of random Pokemon from the API"""
     async with ClientSession() as session:
         tasks = []
