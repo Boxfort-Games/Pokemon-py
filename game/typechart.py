@@ -39,7 +39,7 @@ class Multiplier(Enum):
     NO_EFFECT = 0
 
 
-TYPECHART = {
+TYPECHART: dict[Element, dict[Element, Multiplier]] = {
     Element.NORMAL: {
         Element.ROCK: Multiplier.WEAK,
         Element.STEEL: Multiplier.WEAK,

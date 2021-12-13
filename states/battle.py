@@ -29,6 +29,7 @@ class Battle(State):
         print(MESSAGES["BATTLE"]["ENTRY"].format(self.enemy.name), end="\n" * 2)
         while self.option != BattleOptions.RUN:
             self.option = self.check_input(BattleOptions)
+            # TODO: Implement battling
             if self.option == BattleOptions.FIGHT:
                 pass
             elif self.option == BattleOptions.TEAM:

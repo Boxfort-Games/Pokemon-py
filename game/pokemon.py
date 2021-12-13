@@ -28,7 +28,7 @@ class Pokemon:
         )
         self.health = self.total_health
 
-    def __repr__(self):
+    def __repr__(self) -> str:
         return self.name
 
     def __str__(self) -> str:
