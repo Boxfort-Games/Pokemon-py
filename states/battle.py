@@ -2,9 +2,10 @@ import asyncio
 from typing import Optional
 
 from api import pokeapi
-from config.config import MESSAGES
+from config import MESSAGES
 from game.pokemon import Pokemon
-from states.state import State, StateOptions
+
+from states import State, StateOptions
 
 
 class BattleOptions(StateOptions):

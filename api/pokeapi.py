@@ -3,10 +3,8 @@ import random
 from typing import Any
 
 from aiohttp import ClientSession
-
 from game.pokemon import Pokemon
 from game.typechart import Element
-
 
 """Current highest Pokemon dex number in PokeAPI"""
 MAX_DEX_NUMBER = 898

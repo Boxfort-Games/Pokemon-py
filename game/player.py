@@ -1,8 +1,9 @@
 import asyncio
-from readchar import readkey
 
 from api import pokeapi
-from config.config import MESSAGES
+from config import MESSAGES
+from readchar import readkey
+
 from game.pokemon import Pokemon
 
 

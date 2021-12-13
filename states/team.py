@@ -1,9 +1,10 @@
 from operator import attrgetter
 from typing import Optional
 
-from config.config import MESSAGES
+from config import MESSAGES
 from game.player import PLAYER
-from states.state import State, StateOptions
+
+from states import State, StateOptions
 
 
 class ReorderOptions(StateOptions):

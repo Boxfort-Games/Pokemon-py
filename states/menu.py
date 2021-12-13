@@ -1,8 +1,9 @@
 from typing import Optional
 
-from config.config import MESSAGES
+from config import MESSAGES
+
+from states import State, StateOptions
 from states.battle import Battle
-from states.state import State, StateOptions
 from states.team import Team
 
 
