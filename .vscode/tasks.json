@@ -2,7 +2,7 @@
     "version": "2.0.0",
     "tasks": [
         {
-            "label": "Pip Install",
+            "label": "pip: install",
             "detail": "pip install -r requirements.txt",
             "type": "shell",
             "problemMatcher": [],
@@ -14,10 +14,21 @@
                 "-r",
                 "requirements.txt"
             ],
+            "group": "build"
+        },
+        {
+            "label": "python: app.py",
+            "detail": "python app.py",
+            "type": "process",
+            "problemMatcher": [],
+            "command": "${config:python.pythonPath}",
+            "args": [
+                "app.py"
+            ],
             "group": {
                 "kind": "build",
                 "isDefault": true
             }
-        },
+        }
     ]
 }

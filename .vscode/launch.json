@@ -5,7 +5,7 @@
     "version": "0.2.0",
     "configurations": [
         {
-            "name": "Python: Main",
+            "name": "Python: app.py",
             "type": "python",
             "request": "launch",
             "justMyCode": true,
