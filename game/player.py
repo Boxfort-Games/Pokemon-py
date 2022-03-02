@@ -11,10 +11,12 @@ class Player:
     """Holds current information about the player"""
 
     team: list[Pokemon] = []
+    lead_pokemon: Pokemon
 
     def __init__(self):
         """Fills the player's team with a random Pokemon from the PokeAPI"""
         self.add_to_team(asyncio.run(pokeapi.get_random_pokemon_from_api()))
+        self.lead_pokemon = self.team[0]
         # self.team.extend(asyncio.run(pokeapi.get_random_pokemons_from_api(2)))
 
     def add_to_team(self, pokemon: Pokemon):
@@ -69,6 +71,9 @@ class Player:
         )
         print(header)
         print(*[str(pokemon) for pokemon in self.team], sep="\n", end="\n" * 2)
+
+    def set_lead_pokemon(self):
+        pass
 
 
 """Global Player instance"""
