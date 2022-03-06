@@ -1,6 +1,8 @@
 import asyncio
 import random
 from typing import Optional
+from unittest import case
+from xmlrpc.client import boolean
 
 from api import pokeapi
 from config import MESSAGES
@@ -28,10 +30,13 @@ class Battle(State):
     def __init__(self):
         super().__init__()
         self.enemy = asyncio.run(pokeapi.get_random_pokemon_from_api())
-        is_escape = False
+        end_encounter = False
+
         print(MESSAGES["BATTLE"]["ENTRY"].format(self.enemy.name), end="\n" * 2)
-        print(f"Go {PLAYER.lead_pokemon.name}! \n")
-        while is_escape is not True:
+        self.send_pokemon(PLAYER.lead_pokemon)
+        self.print_health(PLAYER.lead_pokemon)
+
+        while end_encounter is not True:
             self.option = self.check_input(BattleOptions)
             # TODO: Implement battling
             if self.option == BattleOptions.FIGHT:
@@ -39,9 +44,25 @@ class Battle(State):
             elif self.option == BattleOptions.TEAM:
                 pass
             elif self.option == BattleOptions.CATCH:
-                pass
+                if self.calc_catch_prob() is True:
+                    self.catch_pokemon()
+                    end_encounter = True
+                else:
+                    print(MESSAGES["BATTLE"]["CATCH_FAIL"].format(self.enemy.name))
+                    self.enemy_pokemon_attack()
+                    self.health_case(
+                        self.check_health_zero(PLAYER.lead_pokemon),
+                        PLAYER.lead_pokemon,
+                    )
             elif self.option == BattleOptions.RUN:
-                is_escape = self.calc_run_prob()
+                end_encounter = self.calc_run_prob()
+
+                if end_encounter is False:
+                    self.enemy_pokemon_attack()
+                    self.health_case(
+                        self.check_health_zero(PLAYER.lead_pokemon),
+                        PLAYER.lead_pokemon,
+                    )
 
     def calc_run_prob(self) -> bool:
         """Calculates run failure as a percentage of enemy health to player health and caps it at 90%"""
@@ -49,9 +70,86 @@ class Battle(State):
         run_calc = min(self.enemy.health / PLAYER.lead_pokemon.health, 0.9)
         run_chance = random.random()
         if run_chance > run_calc:
-            print("Got away safely! \n")
+            print(MESSAGES["BATTLE"]["RUN_SUCESS"], end="\n" * 2)
             return True
         else:
-            print("Failed to run!")
-            print(f"Wild {self.enemy.name} attacked! \n")
+            print(MESSAGES["BATTLE"]["RUN_FAIL"], end=" ")
+            print(f"Wild {self.enemy.name} attacked!")
             return False
+
+    def calc_catch_prob(self) -> bool:
+        """Calculates catch failure as a percentage of enemy health to player health and caps it at 90%"""
+
+        catch_calc = min(self.enemy.health / PLAYER.lead_pokemon.health, 0.9)
+        catch_chance = random.random()
+        # catch_chance = 1.0
+
+        if catch_chance > catch_calc:
+            return True
+        else:
+            return False
+
+    def catch_pokemon(self):
+        """Adds Pokemon and prints text informing user of that case and makes player remove Pokemon from team if team size is greater than 6"""
+        print(
+            f'{MESSAGES["BATTLE"]["CATCH_SUCCESS"]} {PLAYER.add_to_team(self.enemy)}',
+            end="\n" * 2,
+        )
+        if PLAYER.get_team_size() > 6:
+            print(MESSAGES["TEAM"]["MUST_RELEASE"], end="\n" * 2)
+            PLAYER.remove_from_team()
+
+    def enemy_pokemon_attack(self):
+        """Will handle the enemy Pokemon's attack"""
+        attack = "Bite"
+        attack_damage = 2
+        PLAYER.lead_pokemon.health = max(PLAYER.lead_pokemon.health - attack_damage, 0)
+
+        print(
+            MESSAGES["BATTLE"]["ENEMY_ATTACK"].format(
+                self.enemy.name, attack, PLAYER.lead_pokemon.name, attack_damage
+            ),
+            end="\n" * 2,
+        )
+
+    def print_health(self, pokemon: Pokemon):
+        """Print's the Pokemon's current and max health"""
+        print(
+            MESSAGES["BATTLE"]["HEALTH"].format(
+                pokemon.name, max(pokemon.health, 0), pokemon.total_health
+            ),
+            end="\n" * 2,
+        )
+
+    def check_health_zero(self, pokemon: Pokemon) -> boolean:
+        """Checks if Pokemon's health is less than or equal to zero"""
+        if pokemon.health <= 0:
+            return True
+        return False
+
+    def health_case(self, is_health_zero: boolean, pokemon: Pokemon):
+        """Handles the cases for when a Pokemon's health reaches zero"""
+        self.print_health(pokemon)
+        if is_health_zero is True:
+            self.fainted_text(pokemon)
+            PLAYER.fainted_remove()
+            if PLAYER.get_team_size() < 1:
+                print(MESSAGES["BATTLE"]["GAME_OVER"])
+                quit()
+            PLAYER.set_lead_pokemon()
+            pokemon = PLAYER.lead_pokemon
+            self.send_pokemon(pokemon)
+
+    def fainted_text(self, pokemon: Pokemon):
+        """Prints text of Pokemon that fainted"""
+        print(
+            MESSAGES["BATTLE"]["FAINTED"].format(pokemon.name, pokemon.name),
+            end="\n" * 2,
+        )
+
+    def send_pokemon(self, pokemon: Pokemon):
+        """Prints text of the Pokemon being sent into battle"""
+        print(
+            MESSAGES["BATTLE"]["SEND_LEADER"].format(pokemon.name),
+            end="\n" * 2,
+        )

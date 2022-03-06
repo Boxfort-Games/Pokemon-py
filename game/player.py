@@ -1,4 +1,6 @@
 import asyncio
+from tabnanny import check
+from xmlrpc.client import boolean
 
 from api import pokeapi
 from config import MESSAGES
@@ -15,17 +17,17 @@ class Player:
 
     def __init__(self):
         """Fills the player's team with a random Pokemon from the PokeAPI"""
-        self.add_to_team(asyncio.run(pokeapi.get_random_pokemon_from_api()))
+        print(self.add_to_team(asyncio.run(pokeapi.get_random_pokemon_from_api())))
         self.lead_pokemon = self.team[0]
         # self.team.extend(asyncio.run(pokeapi.get_random_pokemons_from_api(2)))
 
     def add_to_team(self, pokemon: Pokemon):
-        """Add a pokemon to the user's team and inform the user"""
+        """Add a Pokemon to the user's team and inform the user"""
         self.team.append(pokemon)
-        print(f"{pokemon.name} {MESSAGES['POKEMON']['ADD']}")
+        return f"{pokemon.name} {MESSAGES['POKEMON']['ADD']}"
 
     def remove_from_team(self):
-        """Prompts user to remove a pokemon from the user's team"""
+        """Prompts user to remove a Pokemon from the user's team"""
         is_tossing = True
         while is_tossing:
             if len(self.team) <= 1:
@@ -42,7 +44,7 @@ class Player:
                 is_tossing = self.__attempt_toss()
 
     def __attempt_toss(self) -> bool:
-        """Receives user input and attempts to toss a pokemon"""
+        """Receives user input and attempts to toss a Pokemon"""
         try:
             choice = readkey()
             player_toss_index = int(choice) - 1
@@ -62,7 +64,10 @@ class Player:
             return True
         except ValueError:
             # Key other than number was pressed
-            return False
+            if self.get_team_size() > 6:
+                return False
+            print(MESSAGES["TEAM"]["MUST_RELEASE"], end="\n" * 2)
+            return True
 
     def print_team(self):
         """Prints a formatted table of the player's team"""
@@ -73,7 +78,16 @@ class Player:
         print(*[str(pokemon) for pokemon in self.team], sep="\n", end="\n" * 2)
 
     def set_lead_pokemon(self):
-        pass
+        """Sets the team leader"""
+        self.lead_pokemon = self.team[0]
+
+    def get_team_size(self) -> int:
+        """Getter for Team Size"""
+        return len(self.team)
+
+    def fainted_remove(self):
+        """Removes fainted pokemon from team"""
+        self.team.pop(self.team.index(self.lead_pokemon))
 
 
 """Global Player instance"""

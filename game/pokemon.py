@@ -9,6 +9,7 @@ class Pokemon:
 
     name: str
     dex_number: int
+    # capture_rate: int
     types: list[Element]
     health: int
     total_health: int
@@ -17,11 +18,13 @@ class Pokemon:
         self,
         name: str,
         dex_number: int,
+        # capture_rate: int,
         types: list[Element],
         total_health: Optional[int] = None,
     ):
         self.name = name
         self.dex_number = dex_number
+        # self.capture_rate = capture_rate
         self.types = types
         self.total_health = (
             total_health if total_health is not None else random.randint(20, 50)

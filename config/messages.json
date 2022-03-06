@@ -12,14 +12,24 @@
     },
     "TEAM": {
         "ENTRY": "MANAGE TEAM",
-        "TOSS": "Enter # of Pokemon to toss:",
+        "TOSS": "Enter # of Pokemon to release:",
         "RESULT": "has been released. Goodbye",
         "EXIT": "Any other key: Exit",
         "EXIST_ERROR": "That Pokemon does not exist!",
-        "SIZE_ERROR": "Cannot toss with only one Pokemon in your team!",
-        "REORDER": "REORDER TEAM"
+        "SIZE_ERROR": "Cannot release with only one Pokemon in your team!",
+        "REORDER": "REORDER TEAM",
+        "MUST_RELEASE": "There is not enough space in your team!"
     },
     "BATTLE": {
-        "ENTRY": "A wild {} appeared!"
+        "ENTRY": "A wild {} appeared!",
+        "SEND_LEADER": "Go {}!",
+        "RUN_SUCESS": "Got away safely!",
+        "RUN_FAIL": "Failed to run!",
+        "CATCH_SUCCESS": "Gotcha,",
+        "CATCH_FAIL": "Darn {} broke free!",
+        "ENEMY_ATTACK": "Wild {} used {}. {} took {} damage!",
+        "HEALTH": "{}'s Health: {}/{}",
+        "FAINTED": "{}'s health fell to 0. {} fainted.",
+        "GAME_OVER": "No Pokemon left in your team. GAME OVER!"
     }
 }
