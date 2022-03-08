@@ -12,7 +12,7 @@ class MenuOptions(StateOptions):
 
     BATTLE = 1
     TEAM = 2
-    EXIT = 3
+    EXIT = 9
 
 
 class Menu(State):

@@ -43,7 +43,7 @@ class Reorder(State):
 class TeamOptions(StateOptions):
     """Enum values for team management options"""
 
-    TOSSPKMN = 1
+    RELEASEPKMN = 1
     REORDER = 2
     EXIT = 3
 
@@ -58,7 +58,7 @@ class Team(State):
         while self.option != TeamOptions.EXIT:
             print(MESSAGES["TEAM"]["ENTRY"])
             self.option = self.check_input(TeamOptions)
-            if self.option == TeamOptions.TOSSPKMN:
+            if self.option == TeamOptions.RELEASEPKMN:
                 PLAYER.remove_from_team()
             elif self.option == TeamOptions.REORDER:
                 PLAYER.print_team()

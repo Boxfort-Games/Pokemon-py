@@ -12,7 +12,7 @@
     },
     "TEAM": {
         "ENTRY": "MANAGE TEAM",
-        "TOSS": "Enter # of Pokemon to release:",
+        "RELEASE": "Enter # of Pokemon to release:",
         "RESULT": "has been released. Goodbye",
         "EXIT": "Any other key: Exit",
         "EXIST_ERROR": "That Pokemon does not exist!",
