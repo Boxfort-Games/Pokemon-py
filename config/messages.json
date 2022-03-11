@@ -25,7 +25,7 @@
         "SEND_LEADER": "Go {}!",
         "RUN_SUCESS": "Got away safely!",
         "RUN_FAIL": "Failed to run!",
-        "CATCH_SUCCESS": "Gotcha,",
+        "CATCH_SUCCESS": "Gotcha, wild",
         "CATCH_FAIL": "Darn wild {} broke free!",
         "ENEMY_ATTACK": "Wild {} used {}. {} took {} damage!",
         "HEALTH": "{}'s Health: {}/{}",
