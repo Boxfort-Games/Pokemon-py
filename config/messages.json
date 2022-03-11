@@ -26,7 +26,7 @@
         "RUN_SUCESS": "Got away safely!",
         "RUN_FAIL": "Failed to run!",
         "CATCH_SUCCESS": "Gotcha,",
-        "CATCH_FAIL": "Darn {} broke free!",
+        "CATCH_FAIL": "Darn wild {} broke free!",
         "ENEMY_ATTACK": "Wild {} used {}. {} took {} damage!",
         "HEALTH": "{}'s Health: {}/{}",
         "FAINTED": "{}'s health fell to 0. {} fainted.",
