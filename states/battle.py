@@ -24,16 +24,16 @@ class Battle(State):
 
     option: Optional[BattleOptions] = None
     enemy: Pokemon
+    end_encounter = False
 
     def __init__(self):
         super().__init__()
         self.enemy = asyncio.run(pokeapi.get_random_pokemon_from_api())
-        end_encounter = False
 
         print(MESSAGES["BATTLE"]["ENTRY"].format(self.enemy.name), end="\n" * 2)
         self.send_pokemon(PLAYER.lead_pokemon)
 
-        while end_encounter is not True:
+        while self.end_encounter is not True:
             self.option = self.check_input(BattleOptions)
             # TODO: Implement battling
             if self.option == BattleOptions.FIGHT:
@@ -41,16 +41,17 @@ class Battle(State):
             elif self.option == BattleOptions.TEAM:
                 pass
             elif self.option == BattleOptions.CATCH:
-                if self.calc_catch_prob() is True:
-                    self.catch_pokemon()
-                    end_encounter = True
-                else:
-                    self.catch_fail()
+                Catch()
+                # if self.calc_catch_prob() is True:
+                #     self.catch_pokemon()
+                #     end_encounter = True
+                # else:
+                #     self.catch_fail()
             elif self.option == BattleOptions.RUN:
-                end_encounter = self.calc_run_prob()
+                self.end_encounter = self.calc_run_prob()
 
-                if end_encounter is False:
-                    self.run_fail()
+                if self.end_encounter is False:
+                    self.enemy_pokemon_attack()
 
     def calc_run_prob(self) -> bool:
         """Calculates run failure as a percentage of enemy health to player health and caps it at 90%"""
@@ -92,10 +93,6 @@ class Battle(State):
         print(MESSAGES["BATTLE"]["CATCH_FAIL"].format(self.enemy.name))
         self.enemy_pokemon_attack()
 
-    def run_fail(self):
-        """Handles case for failed run attempt"""
-        self.enemy_pokemon_attack()
-
     def enemy_pokemon_attack(self):
         """Will handle the enemy Pokemon's attack"""
         attack = "Bite"
@@ -108,9 +105,9 @@ class Battle(State):
             ),
             end="\n" * 2,
         )
-        self.health_case(
-            self.check_health_zero(PLAYER.lead_pokemon), PLAYER.lead_pokemon
-        )
+        self.print_health(PLAYER.lead_pokemon)
+        if self.check_health_zero(PLAYER.lead_pokemon) is True:
+            self.health_case(PLAYER.lead_pokemon)
 
     def print_health(self, pokemon: Pokemon):
         """Print's the Pokemon's current and max health"""
@@ -127,18 +124,15 @@ class Battle(State):
             return True
         return False
 
-    def health_case(self, is_health_zero: bool, pokemon: Pokemon):
+    def health_case(self, pokemon: Pokemon):
         """Handles the cases for when a Pokemon's health reaches zero"""
-        self.print_health(pokemon)
-        if is_health_zero is True:
-            self.fainted_text(pokemon)
-            if len(PLAYER.team) - 1 < 1:
-                print(MESSAGES["BATTLE"]["GAME_OVER"])
-                quit()
-            PLAYER.fainted_remove()
-            # PLAYER.set_lead_pokemon()
-            pokemon = PLAYER.lead_pokemon
-            self.send_pokemon(pokemon)
+        self.fainted_text(pokemon)
+        if len(PLAYER.team) - 1 < 1:
+            print(MESSAGES["BATTLE"]["GAME_OVER"])
+            quit()
+        PLAYER.fainted_remove()
+        pokemon = PLAYER.lead_pokemon
+        self.send_pokemon(pokemon)
 
     def fainted_text(self, pokemon: Pokemon):
         """Prints text of Pokemon that fainted"""
@@ -154,3 +148,12 @@ class Battle(State):
             end="\n" * 2,
         )
         self.print_health(pokemon)
+
+
+class Catch(Battle):
+    def __init__(self):
+        if self.calc_catch_prob() is True:
+            self.catch_pokemon()
+            Battle.end_encounter = True
+        else:
+            self.catch_fail()
