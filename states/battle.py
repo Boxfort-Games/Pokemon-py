@@ -91,18 +91,10 @@ class Battle(State):
         """Handles the case for a failed catch attempt"""
         print(MESSAGES["BATTLE"]["CATCH_FAIL"].format(self.enemy.name))
         self.enemy_pokemon_attack()
-        self.health_case(
-            self.check_health_zero(PLAYER.lead_pokemon),
-            PLAYER.lead_pokemon,
-        )
 
     def run_fail(self):
         """Handles case for failed run attempt"""
         self.enemy_pokemon_attack()
-        self.health_case(
-            self.check_health_zero(PLAYER.lead_pokemon),
-            PLAYER.lead_pokemon,
-        )
 
     def enemy_pokemon_attack(self):
         """Will handle the enemy Pokemon's attack"""
@@ -115,6 +107,9 @@ class Battle(State):
                 self.enemy.name, attack, PLAYER.lead_pokemon.name, attack_damage
             ),
             end="\n" * 2,
+        )
+        self.health_case(
+            self.check_health_zero(PLAYER.lead_pokemon), PLAYER.lead_pokemon
         )
 
     def print_health(self, pokemon: Pokemon):

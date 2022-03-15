@@ -28,7 +28,7 @@ class Player:
         """Prompts user to remove a Pokemon from the user's team"""
         is_releasing = True
         while is_releasing:
-            if len(self.team) - 1 < 1:
+            if len(self.team) < 2:
                 print(MESSAGES["TEAM"]["SIZE_ERROR"], end="\n" * 2)
                 is_releasing = False
             else:
@@ -65,9 +65,9 @@ class Player:
         except ValueError:
             # Key other than number was pressed
             if len(self.team) > 6:
-                return False
-            print(MESSAGES["TEAM"]["MUST_RELEASE"], end="\n" * 2)
-            return True
+                print(MESSAGES["TEAM"]["MUST_RELEASE"], end="\n" * 2)
+                return True
+            return False
 
     def print_team(self):
         """Prints a formatted table of the player's team"""
