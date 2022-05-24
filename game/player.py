@@ -16,8 +16,8 @@ class Player:
     def __init__(self):
         """Fills the player's team with a random Pokemon from the PokeAPI"""
         print(self.add_to_team(asyncio.run(pokeapi.get_random_pokemon_from_api())))
+        # self.team.extend(asyncio.run(pokeapi.get_random_pokemons_from_api(5)))
         self.lead_pokemon = self.team[0]
-        # self.team.extend(asyncio.run(pokeapi.get_random_pokemons_from_api(2)))
 
     def add_to_team(self, pokemon: Pokemon) -> str:
         """Add a Pokemon to the user's team and inform the user"""
@@ -40,7 +40,6 @@ class Player:
                 print(MESSAGES["TEAM"]["EXIT"], end="\n" * 2)
 
                 is_releasing = self.__attempt_release()
-
         self.set_lead_pokemon()
 
     def __attempt_release(self) -> bool:

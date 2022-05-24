@@ -41,16 +41,11 @@ class Battle(State):
             elif self.option == BattleOptions.TEAM:
                 pass
             elif self.option == BattleOptions.CATCH:
-                Catch()
-                # if self.calc_catch_prob() is True:
-                #     self.catch_pokemon()
-                #     end_encounter = True
-                # else:
-                #     self.catch_fail()
+                Catch(self)
             elif self.option == BattleOptions.RUN:
-                self.end_encounter = self.calc_run_prob()
-
-                if self.end_encounter is False:
+                if self.calc_run_prob():
+                    self.end_encounter = True
+                else:
                     self.enemy_pokemon_attack()
 
     def calc_run_prob(self) -> bool:
@@ -65,33 +60,6 @@ class Battle(State):
             print(MESSAGES["BATTLE"]["RUN_FAIL"], end=" ")
             print(f"Wild {self.enemy.name} attacked!")
             return False
-
-    def calc_catch_prob(self) -> bool:
-        """Calculates catch failure as a percentage of enemy health to player health and caps it at 90%"""
-
-        catch_calc = min(self.enemy.health / PLAYER.lead_pokemon.health, 0.9)
-        catch_chance = random.random()
-        # catch_chance = 1.0
-
-        if catch_chance > catch_calc:
-            return True
-        else:
-            return False
-
-    def catch_pokemon(self):
-        """Adds Pokemon and ensures player with a team size greater than 6 remove a Pokemon"""
-        print(
-            f'{MESSAGES["BATTLE"]["CATCH_SUCCESS"]} {PLAYER.add_to_team(self.enemy)}',
-            end="\n" * 2,
-        )
-        if len(PLAYER.team) > 6:
-            print(MESSAGES["TEAM"]["MUST_RELEASE"], end="\n" * 2)
-            PLAYER.remove_from_team()
-
-    def catch_fail(self):
-        """Handles the case for a failed catch attempt"""
-        print(MESSAGES["BATTLE"]["CATCH_FAIL"].format(self.enemy.name))
-        self.enemy_pokemon_attack()
 
     def enemy_pokemon_attack(self):
         """Will handle the enemy Pokemon's attack"""
@@ -150,10 +118,39 @@ class Battle(State):
         self.print_health(pokemon)
 
 
-class Catch(Battle):
-    def __init__(self):
-        if self.calc_catch_prob() is True:
+class Catch(State):
+    battle: Battle
+
+    def __init__(self, battle: Battle):
+        self.battle = battle
+        battle.end_encounter = self.calc_catch_prob()
+        if self.battle.end_encounter:
             self.catch_pokemon()
-            Battle.end_encounter = True
         else:
             self.catch_fail()
+
+    def calc_catch_prob(self) -> bool:
+        """Calculates catch failure as a percentage of enemy health to player health and caps it at 90%"""
+
+        catch_calc = min(self.battle.enemy.health / PLAYER.lead_pokemon.health, 0.9)
+        catch_chance = random.random()
+
+        if catch_chance > catch_calc:
+            return True
+        else:
+            return False
+
+    def catch_pokemon(self):
+        """Adds Pokemon and ensures player with a team size greater than 6 remove a Pokemon"""
+        print(
+            f'{MESSAGES["BATTLE"]["CATCH_SUCCESS"]} {PLAYER.add_to_team(self.battle.enemy)}',
+            end="\n" * 2,
+        )
+        if len(PLAYER.team) > 6:
+            print(MESSAGES["TEAM"]["MUST_RELEASE"], end="\n" * 2)
+            PLAYER.remove_from_team()
+
+    def catch_fail(self):
+        """Handles the case for a failed catch attempt"""
+        print(MESSAGES["BATTLE"]["CATCH_FAIL"].format(self.battle.enemy.name))
+        self.battle.enemy_pokemon_attack()
