@@ -46,4 +46,9 @@ def map_pokepy_to_pokemon(pokepy_mon: Any) -> Pokemon:
         Element[pokepy_type["type"]["name"].upper()]
         for pokepy_type in pokepy_mon["types"]
     ]
-    return Pokemon(pokepy_mon["name"].capitalize(), pokepy_mon["id"], type_list)
+    return Pokemon(
+        pokepy_mon["name"].capitalize(),
+        pokepy_mon["id"],
+        # pokepy_mon["capture_rate"],
+        type_list,
+    )
